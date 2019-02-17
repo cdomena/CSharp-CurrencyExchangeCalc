@@ -15,7 +15,8 @@ namespace CodeLouFinal
             // constructor to read Defaults and fill in properties
            
         }
-       
+        // attempting to deserialize json to dictionary for easy search.
+        public static Dictionary<Rates>
 
         static int Menu()
         {
@@ -48,17 +49,7 @@ namespace CodeLouFinal
         }
         static string Origin {get; set;}
         static string Destination { get; set; }
-        //public static list<defaults> deserializedefaults(string filename)
-        //{
-        //    var settings = new list<defaults>();
-        //    var serializer = new jsonserializer();
-        //    using (var reader = new streamreader(filename))
-        //    using (var jsonreader = new jsontextreader(reader))
-        //        {
-        //        settings = serializer.deserialize<list<defaults>>(jsonreader);
-        //        }
-        //    return settings;
-        //}
+     
 
 
 
@@ -66,7 +57,7 @@ namespace CodeLouFinal
 
         static void Main(string[] args)
         {
-            Defaults defaults = new Defaults();
+            Defaults defaults = new Defaults(); //used later to set default saved country selections
             var menuOption = Menu();
             CountryList search = new CountryList();
             while (menuOption < 5)
@@ -95,7 +86,7 @@ namespace CodeLouFinal
 
                         if (search.CodeSet(test2) == true)
                         {
-                            Console.WriteLine("Origin Set");
+                            Console.WriteLine("Destination Set");
                             Program.Destination = test2.ToUpper();
                             Console.Clear();
                         }
@@ -105,7 +96,6 @@ namespace CodeLouFinal
                         }
                         break;
                     case 3:
-                        // CountryList search = new CountryList();
                         Console.Clear();
                         Console.WriteLine("Enter the Country name:");
                         search.SearchTerm(Console.ReadLine());
@@ -116,7 +106,7 @@ namespace CodeLouFinal
                     case 5:
                         break;
                     default:
-                        Console.WriteLine("You chose an invalid option.");
+                        Console.WriteLine("You chose an invalid option. Press Enter to continue.");
                         Console.ReadLine();
                         Console.Clear();
                         break;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CodeLouFinal
 {
 
-    public class RootObject
+    public class DefaultSettings
     {
         public Defaults[] Starting { get; set; }
     }
