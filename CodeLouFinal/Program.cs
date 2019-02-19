@@ -16,7 +16,18 @@ namespace CodeLouFinal
            
         }
         // attempting to deserialize json to dictionary for easy search.
-        public static Dictionary<Rates>
+        public static Dictionary<string, Rates> DeserializeRates()
+        {
+            var rates = new Dictionary<string, Rates>();
+            var serializer = new JsonSerializer();
+            string path = Directory.GetCurrentDirectory();
+            using (var reader = new StreamReader(Path.Combine(path, @"Data\Exchangerates.json")))
+            using (var jsonReader = new JsonTextReader(reader))
+            {
+                rates = serializer.Deserialize<Dictionary<string, Rates>>(jsonReader);
+            }
+            return rates;
+        }
 
         static int Menu()
         {
@@ -46,6 +57,7 @@ namespace CodeLouFinal
             return 0;
 
 
+
         }
         static string Origin {get; set;}
         static string Destination { get; set; }
@@ -57,9 +69,11 @@ namespace CodeLouFinal
 
         static void Main(string[] args)
         {
-            Defaults defaults = new Defaults(); //used later to set default saved country selections
+            //Defaults defaults = new Defaults(); //used later to set default saved country selections
             var menuOption = Menu();
             CountryList search = new CountryList();
+            Dictionary<string, Rates> rates = DeserializeRates();
+            Console.ReadLine();
             while (menuOption < 5)
             {
                 switch (menuOption)
@@ -67,7 +81,7 @@ namespace CodeLouFinal
                     case 1:
                         Console.WriteLine("Enter Origin Country Code:");
                         var test = Console.ReadLine();
-                                               
+
                         if (search.CodeSet(test) == true)
                         {
                             Console.WriteLine("Origin Set");
@@ -101,7 +115,7 @@ namespace CodeLouFinal
                         search.SearchTerm(Console.ReadLine());
                         break;
                     case 4:
-                        
+
                         break;
                     case 5:
                         break;
