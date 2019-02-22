@@ -119,7 +119,6 @@ namespace CodeLouFinal
                                                 {"LESOTHO","ZAR"},
                                                 {"NAMIBIA","ZAR"},
                                                 {"SOUTH AFRICA","ZAR"},
-                                              
                                             };
         public void SearchTerm(string term)
         {
@@ -153,5 +152,43 @@ namespace CodeLouFinal
             return search;
         }
 
+        public void SetCountryCode(int menuOption, string test)
+        {
+
+            if (string.IsNullOrWhiteSpace(test))
+            {
+                Console.WriteLine("No selection made please try again.");
+            }
+            else
+            {
+                switch (menuOption)
+                {
+                    case 1:
+                        if (CodeSet(test) && (test.ToUpper()) != (Program.Destination.ToUpper()))
+                        {
+                            Console.WriteLine("Origin Set");
+                            Program.Origin = test.ToUpper();
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No match found or already selected as Destination.");
+                        }
+                        break;
+                    case 2:
+                        if (CodeSet(test) && (test.ToUpper()) != (Program.Origin.ToUpper()))
+                        {
+                            Console.WriteLine("Destination Set");
+                            Program.Destination = test.ToUpper();
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No match found or already selected as Destination.");
+                        }
+                        break;
+                }
+            }
+        }
     }
 }
