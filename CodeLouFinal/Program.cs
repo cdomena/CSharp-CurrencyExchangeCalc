@@ -72,12 +72,13 @@ namespace CodeLouFinal
         {
             Origin = "n/a";
             Destination = "n/a";
-            //Defaults defaults = new Defaults(); //used later to set default saved country selections
+           
+
             var menuOption = Menu();
             CountryList search = new CountryList();
      //     Dictionary<string, decimal> rates = DeserializeRates();
             var myRates = new RatesClass(DeserializeRates());
-            decimal exchangeAmount;
+            string exchangeAmount;
             while (menuOption < 5)
             {
                 switch (menuOption)
@@ -113,14 +114,18 @@ namespace CodeLouFinal
                         search.SearchTerm(Console.ReadLine());
                         break;
                     case 4:
-                        Console.Clear();
+                        //Console.Clear();
                         Console.WriteLine("Enter amount to convert:");
-                        Console.ReadLine();
+                        exchangeAmount = Console.ReadLine();
+                        var test3 = myRates.ConvertCurrency(exchangeAmount);
+                        Console.Write("Your exchange will be:{0:C}", test3);
+                            Console.WriteLine(" " + Destination);
+                        Console.WriteLine();
                         break;
                     case 5:
                         break;
                     default:
-                        Console.WriteLine("You chose an invalid option. Press Enter to continue.");
+                        Console.WriteLine("Unrecognized selection, only (1-5) are valid. Press Enter to continue.");
                         Console.ReadLine();
                         Console.Clear();
                         break;

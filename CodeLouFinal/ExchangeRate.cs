@@ -19,13 +19,36 @@ namespace CodeLouFinal
             Rates = rates;
         }
 
-        Dictionary<string, decimal> Rates {get;}
+        Dictionary<string, decimal> Rates { get; }
+        //VerifyAmount method works 100%
+        public bool VerifyAmount(string amount)
+        {
+            if (string.IsNullOrWhiteSpace(amount))
+            {
+                return false;
+            }
+            else if(decimal.TryParse(amount, out decimal verified))
+            {
+                return true;
+            }
+            return false;
+        }
+        public decimal ConvertCurrency(string exchangeAmount)
+        {
+            if(VerifyAmount(exchangeAmount))
+            {
+                var orig = decimal.Parse(exchangeAmount);
+                return (orig / Rates[Program.Origin]) * Rates[Program.Destination];
+            }
+            else
+            {
+                Console.WriteLine("The amount entered is invalid.");
+                return 0;
+            }
+
+
+
+
+        }
     }
-    //public bool VerifyAmount(string amount)
-    //{
-
-
-
-    //}
-
 }
