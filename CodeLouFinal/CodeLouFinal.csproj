@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountryList.cs" />
-    <Compile Include="CurrencyResults.cs" />
     <Compile Include="Defaults.cs" />
     <Compile Include="ExchangeRate.cs" />
     <Compile Include="Program.cs" />

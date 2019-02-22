@@ -15,6 +15,10 @@ namespace CodeLouFinal
             // constructor to read Defaults and fill in properties
             
         }
+
+        static public string Origin { get; set; }
+        static public string Destination { get; set; }
+
         // attempting to deserialize json to dictionary for easy search.
         public static Dictionary<string, decimal> DeserializeRates()
         {
@@ -56,27 +60,15 @@ namespace CodeLouFinal
                 return result;
             }
             return 0;
-
-
-
         }
-        static public string Origin {get; set;}
-        static public string Destination { get; set; }
-     
-
-
-
-
 
         static void Main(string[] args)
         {
             Origin = "n/a";
             Destination = "n/a";
-           
 
             var menuOption = Menu();
             CountryList search = new CountryList();
-     //     Dictionary<string, decimal> rates = DeserializeRates();
             var myRates = new RatesClass(DeserializeRates());
             string exchangeAmount;
             while (menuOption < 5)
@@ -87,21 +79,6 @@ namespace CodeLouFinal
                         Console.WriteLine("Enter Origin Country Code:");
                         var test = Console.ReadLine();
                         search.SetCountryCode(menuOption, test);
-                        //if (string.IsNullOrWhiteSpace(test))
-                        //{
-                        //    Console.WriteLine("No selection made please try again.");
-                        //}
-                        //else if (search.CodeSet(test) && (test.ToUpper()) != (Destination.ToUpper()))
-                        //{
-                        //    Console.WriteLine("Origin Set");
-                        //    Program.Origin = test.ToUpper();
-                        //    Console.Clear();
-
-                        //}
-                        //else
-                        //{
-                        //    Console.WriteLine("No match found or already selected as Destination.");
-                        //}
                         break;
                     case 2:
                         Console.WriteLine("Enter Destination Country Code:");
@@ -114,7 +91,6 @@ namespace CodeLouFinal
                         search.SearchTerm(Console.ReadLine());
                         break;
                     case 4:
-                        //Console.Clear();
                         Console.WriteLine("Enter amount to convert:");
                         exchangeAmount = Console.ReadLine();
                         var test3 = myRates.ConvertCurrency(exchangeAmount);
@@ -125,7 +101,7 @@ namespace CodeLouFinal
                     case 5:
                         break;
                     default:
-                        Console.WriteLine("Unrecognized selection, only (1-5) are valid. Press Enter to continue.");
+                        Console.WriteLine("Unrecognized selection, only (1-5) are valid. Press ENTER to continue.");
                         Console.ReadLine();
                         Console.Clear();
                         break;

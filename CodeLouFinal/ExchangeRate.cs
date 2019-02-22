@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace CodeLouFinal
 {
-
-    //public class RootObject
-    //{
-    //    public Rates rates { get; set; }
-    //}
-
     public class RatesClass
     {
         public RatesClass(Dictionary<string, decimal> rates)
