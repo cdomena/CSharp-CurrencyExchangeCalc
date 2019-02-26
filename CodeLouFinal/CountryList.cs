@@ -120,32 +120,43 @@ namespace CodeLouFinal
                                                 {"NAMIBIA","ZAR"},
                                                 {"SOUTH AFRICA","ZAR"},
                                             };
-        public void SearchTerm(string term)
+        public void SearchTerm()
         {
-            //checks if search entry is more than 3 characters
-            if (term.Length < 4)
+            string term;
+            string tryAgain = "Y";
+            while (tryAgain.ToUpper() == "Y")
             {
-                Console.WriteLine("Please enter more than 3 characters for a search");
-            }
-            else
-            {
-                var code = term.ToUpper();
-                var value = (from i in currencyCode.Where(i => i.Key.Contains(code)) select i); //searchs the dictionary for matches
-                Console.WriteLine("Search Results:");
-                if (value.Count() == 0)
+                Console.Clear();
+                Console.WriteLine("Enter the Country name:");
+                term = Console.ReadLine();
+                //checks if search entry is more than 3 characters
+                if (term.Length < 4)
                 {
-                    Console.WriteLine("No results found");
+                    Console.WriteLine("Please enter more than 3 characters for a search");
                 }
                 else
                 {
-                    foreach (KeyValuePair<string, string> i in value)
+                    var code = term.ToUpper();
+                    var value = (from i in currencyCode.Where(i => i.Key.Contains(code)) select i); //searchs the dictionary for matches
+                    Console.WriteLine("Search Results:");
+                    if (value.Count() == 0)
                     {
-                        Console.WriteLine(i);
+                        Console.WriteLine("No results found");
                     }
-                    Console.WriteLine();
+                    else
+                    {
+                        foreach (KeyValuePair<string, string> i in value)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.WriteLine();
+                    }
                 }
+                Console.WriteLine("Try Again? (Y/N)");
+                tryAgain = Console.ReadLine();
             }
         }
+        // verifies if the currency code exists in the json dictionary. Used by SetCountryCode method
         public bool CodeSet(string verify)
         {
             bool search = currencyCode.ContainsValue(verify.ToUpper());
@@ -172,7 +183,7 @@ namespace CodeLouFinal
                         }
                         else
                         {
-                            Console.WriteLine("No match found or already selected as Destination.");
+                            Console.WriteLine("No match found or already selected as Destination.Please try again");
                         }
                         break;
                     case 2:
@@ -184,7 +195,7 @@ namespace CodeLouFinal
                         }
                         else
                         {
-                            Console.WriteLine("No match found or already selected as Destination.");
+                            Console.WriteLine("No match found or already selected as Destination.Please try again");
                         }
                         break;
                 }

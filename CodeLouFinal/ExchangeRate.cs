@@ -10,10 +10,12 @@ namespace CodeLouFinal
     {
         public RatesClass(Dictionary<string, decimal> rates)
         {
+            // Constructor takes the deserialized info and adds it to the Rates Property
             Rates = rates;
         }
 
         Dictionary<string, decimal> Rates { get; }
+
         //VerifyAmount method works 100%
         public bool VerifyAmount(string amount)
         {
@@ -39,10 +41,6 @@ namespace CodeLouFinal
                 Console.WriteLine("The amount entered is invalid.");
                 return 0;
             }
-
-
-
-
         }
     }
 }

@@ -55,11 +55,11 @@ namespace CodeLouFinal
                 Console.WriteLine("Please try again the response was blank.");
                 return 0;
             }
-            else if (int.TryParse(selection, out int result))
+            else 
             {
+                int.TryParse(selection, out int result);
                 return result;
             }
-            return 0;
         }
 
         static void Main(string[] args)
@@ -69,9 +69,9 @@ namespace CodeLouFinal
 
             var menuOption = Menu();
             CountryList search = new CountryList();
-            var myRates = new RatesClass(DeserializeRates());
+            var myRates = new RatesClass(DeserializeRates()); //Initialize rate class with deserialized data from Exchangerates.json
             string exchangeAmount;
-            while (menuOption < 5)
+            while (menuOption != 5)
             {
                 switch (menuOption)
                 {
@@ -86,17 +86,15 @@ namespace CodeLouFinal
                         search.SetCountryCode(menuOption, test2);
                         break;
                     case 3:
-                        Console.Clear();
-                        Console.WriteLine("Enter the Country name:");
-                        search.SearchTerm(Console.ReadLine());
+                            search.SearchTerm();
                         break;
                     case 4:
-                        Console.WriteLine("Enter amount to convert:");
-                        exchangeAmount = Console.ReadLine();
-                        var test3 = myRates.ConvertCurrency(exchangeAmount);
-                        Console.Write("Your exchange will be:{0:C}", test3);
+                            Console.WriteLine("Enter amount to convert:");
+                            exchangeAmount = Console.ReadLine();
+                            var test3 = myRates.ConvertCurrency(exchangeAmount);
+                            Console.Write("Your exchange will be:{0:C}", test3);
                             Console.WriteLine(" " + Destination);
-                        Console.WriteLine();
+                            Console.WriteLine();
                         break;
                     case 5:
                         break;
@@ -106,15 +104,8 @@ namespace CodeLouFinal
                         Console.Clear();
                         break;
                 }
-
-                if (menuOption != 5)
-                {
-                    menuOption = Menu();
-                }
+                menuOption = Menu();
             }
-
-
-
         }
     }
 }
