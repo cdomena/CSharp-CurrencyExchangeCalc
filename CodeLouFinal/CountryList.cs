@@ -120,6 +120,7 @@ namespace CodeLouFinal
                                                 {"NAMIBIA","ZAR"},
                                                 {"SOUTH AFRICA","ZAR"},
                                             };
+        // searches dictionary field of country names.
         public void SearchTerm()
         {
             string term;
@@ -129,7 +130,7 @@ namespace CodeLouFinal
                 Console.Clear();
                 Console.WriteLine("Enter the Country name:");
                 term = Console.ReadLine();
-                //checks if search entry is more than 3 characters
+                //checks if search entry is more than 3 characters.
                 if (term.Length < 4)
                 {
                     Console.WriteLine("Please enter more than 3 characters for a search");
@@ -156,13 +157,13 @@ namespace CodeLouFinal
                 tryAgain = Console.ReadLine();
             }
         }
-        // verifies if the currency code exists in the json dictionary. Used by SetCountryCode method
+        // verifies if the currency code exists in the dictionary. Used by SetCountryCode method
         public bool CodeSet(string verify)
         {
             bool search = currencyCode.ContainsValue(verify.ToUpper());
             return search;
         }
-
+        //Based on menu selection the country is verified to exist then set as the Origin or destination. Validation to ensure no duplicate entries 
         public void SetCountryCode(int menuOption, string test)
         {
 

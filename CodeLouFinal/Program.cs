@@ -10,14 +10,11 @@ namespace CodeLouFinal
 {
     class Program
     {
-        public Program()
-        {
-            // constructor to read Defaults and fill in properties
-            
-        }
 
         static public string Origin { get; set; }
         static public string Destination { get; set; }
+
+     
 
         // attempting to deserialize json to dictionary for easy search.
         public static Dictionary<string, decimal> DeserializeRates()
@@ -43,7 +40,7 @@ namespace CodeLouFinal
             Console.WriteLine("   |   2. Select Destination    |");
             Console.WriteLine("   |   3. Search Currency Codes |");
             Console.WriteLine("   |   4. Calculate Exchange    |");
-            Console.WriteLine("   |   5. Quit                  |");
+            Console.WriteLine("   |   5. Save and Quit         |");
             Console.WriteLine("   +----------------------------+");
             Console.WriteLine("Origin = " + Program.Origin);
             Console.WriteLine("Destination = " + Program.Destination);
@@ -66,12 +63,14 @@ namespace CodeLouFinal
         {
             Origin = "n/a";
             Destination = "n/a";
+            DefaultSettings SaveLoad = new DefaultSettings();
 
             var menuOption = Menu();
+            
             CountryList search = new CountryList();
             var myRates = new RatesClass(DeserializeRates()); //Initialize rate class with deserialized data from Exchangerates.json
             string exchangeAmount;
-            while (menuOption != 5)
+            while (menuOption <= 5)
             {
                 switch (menuOption)
                 {
@@ -97,7 +96,8 @@ namespace CodeLouFinal
                             Console.WriteLine();
                         break;
                     case 5:
-                        break;
+                        SaveLoad.SaveDefault();
+                        goto Goodbye;
                     default:
                         Console.WriteLine("Unrecognized selection, only (1-5) are valid. Press ENTER to continue.");
                         Console.ReadLine();
@@ -106,6 +106,8 @@ namespace CodeLouFinal
                 }
                 menuOption = Menu();
             }
+        Goodbye:
+            Console.WriteLine("Goodbye");
         }
     }
 }
