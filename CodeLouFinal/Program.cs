@@ -61,10 +61,10 @@ namespace CodeLouFinal
 
         static void Main(string[] args)
         {
-            Origin = "n/a";
-            Destination = "n/a";
+            //Origin = "n/a";
+            //Destination = "n/a";
             DefaultSettings SaveLoad = new DefaultSettings();
-
+            SaveLoad.LoadDefault();
             var menuOption = Menu();
             
             CountryList search = new CountryList();
