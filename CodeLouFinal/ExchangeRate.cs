@@ -29,6 +29,7 @@ namespace CodeLouFinal
             }
             return false;
         }
+        // calculates the exchange based on selection
         public decimal ConvertCurrency(string exchangeAmount)
         {
             if(VerifyAmount(exchangeAmount))

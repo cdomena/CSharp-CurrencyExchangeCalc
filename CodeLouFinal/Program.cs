@@ -61,10 +61,8 @@ namespace CodeLouFinal
 
         static void Main(string[] args)
         {
-            //Origin = "n/a";
-            //Destination = "n/a";
             DefaultSettings SaveLoad = new DefaultSettings();
-            SaveLoad.LoadDefault();
+            SaveLoad.LoadDefault(); //Loads saved origin/destination from defaults.json
             var menuOption = Menu();
             
             CountryList search = new CountryList();
@@ -97,7 +95,7 @@ namespace CodeLouFinal
                         break;
                     case 5:
                         SaveLoad.SaveDefault();
-                        goto Goodbye;
+                        return;
                     default:
                         Console.WriteLine("Unrecognized selection, only (1-5) are valid. Press ENTER to continue.");
                         Console.ReadLine();
@@ -106,8 +104,7 @@ namespace CodeLouFinal
                 }
                 menuOption = Menu();
             }
-        Goodbye:
-            Console.WriteLine("Goodbye");
+        
         }
     }
 }

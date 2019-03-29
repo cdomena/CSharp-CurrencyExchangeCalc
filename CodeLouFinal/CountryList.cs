@@ -8,9 +8,7 @@ namespace CodeLouFinal
 {
     public class CountryList
     {
-        
-        
-
+        // manually created a dictionary to search country names of supported currency
         public Dictionary<string, string> currencyCode = new Dictionary<string, string>
                                             {
                                                 {"AUSTRALIA","AUD"},
