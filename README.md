@@ -9,6 +9,6 @@ Conversion based on EUR as base so calculation is a little more complicated but 
 Defaults (Origin and Destination) are saved from option 5 on last use and sent to the Default.json file. On startup<br />
 the defaults are loaded back into Main().
 
-
+Download project and compile to test it. Ensure the Data folder has the Defaults and Exchangerates JSON files.
 
 
